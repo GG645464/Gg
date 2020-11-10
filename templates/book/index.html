@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<body>
+<!--    {% for i in books_page %}-->
+<!--        <p>{{i.name}}</p>-->
+<!--    {% endfor %}-->
+    <h1 align="center">{{name}}</h1>
+    <hr>
+    <h1 align="center">{{age}}</h1>
+    <hr>
+    <h1 align="center">{{friends|length}}</h1>
+    <hr>
+    {% for foo in friends %}
+{#        <center>{{ forloop }}</center>#}
+        <center>{{ loop.index }}</center>
+    {% endfor %}
+
+    <h1 align="center">{{money['2019']}}</h1>
+    <hr>
+    <h1 align="center">{{friends}}</h1>
+    <hr>
+</body>
+</html>
