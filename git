@@ -1,0 +1,19 @@
+1.git init 					初始化git
+
+2.git add .   				跟踪项目，提交到本地库
+
+3.git commit -m "first commit"  		提交并添加描述信息
+
+4.git remote add origin https://地址		关联仓库
+
+5.git push -u 项目地址 分支名称 		上传到github仓库
+
+6.git status       			 	查看本地代码状态
+
+7. git checkout -b 分支名  			新建分支并切换
+
+8.git branch -d <branch_name> 		删除分支
+
+9. git branch -m <branch_name> newname 	重命名分支
+
+10.git push origin -d BranchName 		远程删除git服务器上的分支
