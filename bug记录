@@ -1,0 +1,96 @@
+"""
+        用于记录Django开发中遇到的BUG
+        1.遇到BUG的时间
+        2.BUG的类型
+        3.BUG的错误信息
+        4.报错解释
+        5.记录出有效的解决方案
+"""
+
+   "用django 2.0的原因是我的mysql版本太低了"
+
+1.
+    1)time：2020-11-9
+    2)Exception Type：NoReverseMatch -> 没有反向匹配
+    3)BUG error message：'book' is not a registered namespace
+    4)problem description：book不是一个命名空间
+    5)slove:
+        plan_No.1:在对应的app.urls下添加：app_name = "book"
+2.
+    1)time:2020-11-9
+    2)Exception Type:ImproperlyConfigured -> 不正确的配置
+    3)BUG error massage::Specifying a namespace in include() without providing
+    4)problem descriptions:路由映射出现“namespace”语法错误
+    5)slove:
+        plan_No.1:查看项目的url空间命名语法是否书写错误
+        namespace语法格式为：path('url地址',include(('app的url文件','命名'),namespace='命名'))
+
+3.
+    1)time:2020-11-9
+    2)Exception Type:TypeError
+    3)Bug error massage:
+        1.detail() takes 1 positional argument but 3 were given
+        2.detail() takes 2 positional arguments but 3 were given
+    4)problem descriptions:视图匹配参数时引发的错误
+    5)slove:
+        plan_No.1:在对应的views中添加接收参数
+
+4.
+    1)time:2020-11-10
+    2)Exception Type:TypeError
+    3)Bug error massage:as_view() takes 1 positional argument but 2 were given
+    4)problem descriptions:定义类视图参数时引发的错误
+    5)slove:
+        plan_No.1:查看url配置路由-->正确格式：views.CenterView.as_view()
+        以及定义的类视图函数中是否包含request 正确格式：[def get(self,request):]
+
+5.
+    1)time:2020-11-10
+    2)Exception Type:AttributeError
+    3)Bug error massage:'HttpResponse' object has no attribute 'body'
+    4)problem descriptions:HttpResponse对象没有body属性
+    5)slove:
+        plan_No.1:查阅HttpResponse对象拥有的属性
+
+6.
+    1)time:2020-11-10
+    2)Exception Type:TemplateDoesNotExist
+    3)Bug error massage: TemplateDoesNotExist at /home/ index.html
+    4)problem descriptions:templates找不到对应的html页面文件
+    5)slove:
+        plan_No.1:查看对应跳转html的函数中路径是否对应
+
+7.
+    1)time:2020-11-10
+    2)Exception Type:TemplateSyntaxError
+    3)Bug error massage:Could not parse the remainder: '[2]' from 'friends[2]'
+    4)problem descriptions:无法从friends中解析[2]
+    5)slove:
+        plan_No.1:列表索引[2]错误,改正语法
+
+8.
+    1)time:2020-11-10
+    2)Exception Type:TemplateSyntaxError
+    3)Bug error massage:TemplateSyntaxError at /home/ Empty variable tag on line 20
+    4)problem descriptions:20行有一个空的变量标签
+    5)slove:
+        plan_No.1:查看是否漏填或多于了HTML页面中的{{}}标签
+
+9.
+    1)time:2020-11-11
+    2)Exception Type:OperationalError
+    3)Bug error massage:no such table: django_session
+    4)problem descriptions:错误跟Session的机制有关，需要创建django_session表
+    5)slove:
+        plan_No.1:python manage.py migrate 迁移文件
+
+10.
+    1)time:2020-11-11
+    2)Exception Type:无
+    3)Bug error massage:Page not found[The current path, set_session/, didn't match any of these.]
+    4)problem descriptions:路由没有匹配到任何url
+    5)slove:
+        plan_No.1:Django2.x简化 URL 路由语法
+            url(r’^articles/(?P[0-9]{4})/$’, views.year_archive)
+            path(‘articles/int:year/’, views.year_archive)
+            >>>path不支持正则匹配<<<
