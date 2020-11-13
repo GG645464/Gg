@@ -4,6 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from book.models import BookInfo,PeopleInfo
 from django.db.models import F,Q
 import datetime
+import json
 # Create your views here.
 
 
@@ -298,4 +299,33 @@ class Person(object):
 # Person.say()
 # p = Person()
 # p.say()
+
+class LoginView(View):
+    def get(self,request):
+        return render(request,'book/login.html')
+
+    def post(self,request):
+        pass
+
+
+class ReceiveView(View):
+    def get(self,request):
+        # 接收参数
+        info = request.GET
+        username = info.get("username")
+        password = info.get("password")
+
+        return JsonResponse({"info":{"username":username,"password":password}})
+
+    def post(self,request):
+        # 接收参数
+        # info = request.POST
+        # Json数据在body中获取，body数据需要decode
+        info = json.loads(request.body.decode())
+
+        username = info.get("username")
+        password = info.get("password")
+
+        return JsonResponse({"info":{"username":username,"password":password}})
+
 

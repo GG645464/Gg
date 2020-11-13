@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^login/$',views.BookView.as_view()),
     url(r'center/$',views.CenterView.as_view()),
     url(r'^home/$',views.HomeView.as_view()),
-
+    url(r'^login1/$',views.LoginView.as_view()),
+    url(r'^rece/$', views.ReceiveView.as_view()),
 ]
 
 

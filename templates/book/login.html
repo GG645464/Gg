@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 1.导入vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    {#    导入axios#}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<!-- 2.定义一个标签，需要给标签添加id -->
+	<div id="app">
+    {#   vue的语法与django的语法冲突    #}
+		<span>[[message]]</span>
+		<hr>
+        <button @click="login">get登录</button>
+        <br>
+        <button @click="login2">post请求</button>
+        <hr />
+        <span>[[username]]</span>
+	</div>
+
+	<!-- 3.创建vue实例 -->
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+            delimiters:['[[',']]'],
+			data:{
+				message:'vue中使用v-on绑定事件',
+                username:'',
+
+				},
+			methods:{
+                login:function () {
+                    // 发送ajax请求
+                    var url = 'http://127.0.0.1:8000/rece/?username=23&password=234'
+                    // then catch用 => 箭头函数
+                    axios.get(url).then( (response)=>{
+                        console.log(response.data.info.username);
+                        this.username = response.data.info.username
+                    } ).catch( (error)=>{
+                        console.log(error);
+                    } )
+
+
+                },
+                login2:function () {
+                    {#axios.post.then().catch()
+                        then是成功的回调
+                        catch是失败的回调
+                    #}
+                     var url = 'http://127.0.0.1:8000/rece/?username=23&password=234';
+                     axios.post(url,{
+                         "username":"post11",
+                         "password":'123'
+                     }).then( (response)=>{
+                        console.log(response.data.info.username);
+                        this.username = response.data.info.username
+                     } ).catch( (error)=>{
+                             console.log(error);
+                     } )
+                }
+				}
+			})
+	</script>
+</body>
+</html>
