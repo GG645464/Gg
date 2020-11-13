@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<body>
+     <table align="center" border="1">
+        <form action="../regist/" method="post">
+            {% csrf_token %}
+            <tr>
+                <td align="center">姓名：<input name="name" type="text"></td>
+            </tr>
+            <tr>
+                <td align="center">密码：<input name="pwd" type="password"></td>
+            </tr>
+            <tr>
+                <td align="center">性别：<input name="gender" type="radio" value="男">男<input name="gender" type="radio" value="女">女</td>
+            </tr>
+             <tr>
+                <td align="center">爱好：
+                    <input name="hobby" type="checkbox" value="篮球">篮球
+                <input name="hobby" type="checkbox" value="足球">足球
+                    <input name="hobby" type="checkbox" value="游戏">游戏
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><input name="submit" type="submit" value="注册"></td>
+            </tr>
+
+
+        </form>
+        </table>
+</body>
+</html>

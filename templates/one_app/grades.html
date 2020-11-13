@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>班级</title>
+</head>
+
+<body>
+    <h1>班级信息</h1>
+    <ul>
+        {% for grade in grades %}
+        <li><a href="{{grade.id}}">{{grade.gname}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

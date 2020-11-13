@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>学生</title>
+</head>
+<body>
+    <h1>学生信息</h1>
+<!--转义成字符串-->
+    {{code|escape}}
+<!--转义成html页面代码-->
+    {{code|safe}}
+
+    <!--关闭自动转义(即代码可以在html页面中渲染)-->
+    {% autoescape off%}
+        {{code}}
+        {{code}}
+    {% endautoescape %}
+
+    <hr/>
+    <a href="{% url 'one1app:good' 16 %}">反向解析链接</a>
+    {# 这是注释的内容 #}
+    <h1>{{test|default:"没有值时的默认值"}}</h1>
+    <h1>{{list|join:'#'}}</h1>
+    <h1>{{str|upper}}</h1>
+    <ul>
+        {% for student in students %}
+        <h1>{{forloop.counter}}</h1>
+        {% if student.sgender %}
+        <li><a href="#">{{student.sname}}-男-{{student.sgrade}}-{{student.isDelete}}</a></li>
+        {% else %}
+        <li><a href="#">{{student.sname}}-女-{{student.sgrade}}-{{student.isDelete}}</a></li>
+<!--            <li><a href="#">{{student.sname}}-{{student.sgender}}</a></li>-->
+        {% endif %}
+        {% endfor %}
+        {% for student in oldlist %}
+        <li>%</li>
+        {% empty %}
+        <li>列表里没有东西</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

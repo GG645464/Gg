@@ -1,0 +1,17 @@
+<!DOCTYPE>
+{% load static from staticfiles %}
+<html>
+<link rel="stylesheet" type="text/css" href="{% static 'myApp/css/style.css'%}" />
+<script type="text/javascript" src="{% static '/myApp/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'myApp/js/my.js'%}"></script>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>静态文件测试</h1>
+    <img src="{% static 'myApp/img/bg.jpg' %}" alt="kl">
+</body>
+</html>
